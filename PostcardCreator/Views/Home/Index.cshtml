@@ -3,12 +3,11 @@
 }
 
 <br />
-<!-- MAIN APP GOES HERE -->
-<h2>Please drop your files here:</h2>
-<div id="dropArea">
-    <p>Drop your files here</p>
-</div>
-<h4>Uploaded files:</h4>
-<ul class="list-group" id="uploadList">
-
-</ul>
+<p id="fileHelp" class="form-text text-muted">Please upload an image:</p>
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { @class = "form-inline", enctype = "multipart/form-data", id = "UploadImage", name = "UploadImage" })) {
+    <div class="input-group">
+        <input class="form-control-file text-primary" type="file" name="file" id="file" />
+        <input class="form-control btn-primary" type="submit" value="Upload" />
+    </div>
+}
+@*<h2>@ViewBag.Error</h2>*@
