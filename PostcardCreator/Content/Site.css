@@ -23,32 +23,27 @@ textarea {
     max-width: 280px;
 }
 
-/* Navbar Styles */
-nav {
-    box-shadow: 0px 0px 15px 0px gray;
-    border-bottom: 1px solid lightblue;
-}
+    input[type="submit"], input[type="file"] {
+        cursor: pointer;
+    }
 
-/* Jumbotron */
-div.jumbotron {
-    /*border: 1px solid blue;
-    background: white;*/
+/* Drag & Drop Area */
+#dropbox {
+    background: white;
     box-shadow: 0px 0px 5px 0px gray;
+    height: 250px;
 }
 
-/* Drop Area Styles */
-#dropArea {
-    background: #b5b5b5;
-    border: black dashed 1px;
-    height: 50px;
-    text-align: center;
-    color: #fff;
-    padding-top: 12px;
+/* Picture Change Canvas styles */
+#change {
+    border-radius: 7px;
+    box-shadow: 0px 0px 4px 0px #00426d;
 }
 
-.active-drop {
-    background: #77bafa !important;
-    border: solid 2px blue !important;
-    opacity: .5;
-    color: black !important;
+a#file_upload, a#drag_and_drop, a#web_cam {
+    cursor: pointer;
+}
+
+.box__error {
+    display: none;
 }

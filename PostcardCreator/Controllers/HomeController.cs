@@ -11,20 +11,50 @@ namespace PostcardCreator.Controllers {
         /// Home page...
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index() {
+        [HttpGet]
+        public ActionResult Index()
+        {
             return View();
         }
 
+        /// <summary>
+        /// Home Page (Upload File)...
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
         [HttpPost]
-        public ActionResult Upload() {
+        public ActionResult Index(HttpPostedFileBase file)
+        {
             string directory = "~/App_Data/Uploads";
-            var upload = Request.Files["file"];
-            if(upload != null && upload.ContentLength > 0) {
-                var fileName = Path.GetFileName(upload.FileName);
-                upload.SaveAs(Server.MapPath(directory + "/" + fileName));
+            if (file != null && file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                file.SaveAs(Server.MapPath(directory + "/" + fileName));
             }
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult FileUpload()
+        {
+            return PartialView();
+        }
+        public ActionResult DragAndDrop()
+        {
+            return PartialView();
+        }
+        public ActionResult WebCam()
+        {
+            return PartialView();
+        }
+
+        /// <summary>
+        /// Changing image page...
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Change()
+        {
+            return View();
         }
     }
 }

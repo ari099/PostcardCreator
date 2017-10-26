@@ -1,0 +1,10 @@
+﻿@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "UploadImage", name = "UploadImage" }))
+{
+    <h2 id="fileHelp" class="form-text text-muted">Please upload an image:</h2>
+    <div id="dropbox" class="jumbotron text-primary">
+        @*Drag &amp; Drop Area goes here*@
+        <input class="form-control-file text-primary box__file" type="file" name="file" id="file" />
+
+    </div>
+    <input class="form-control btn-primary" type="submit" value="Upload" />
+}

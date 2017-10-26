@@ -10,14 +10,21 @@
 <body class="text-primary">
     <nav class="navbar navbar-inverse fixed-top bg-primary">
         @Html.ActionLink("Postcard Creator", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        @*<div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
-        </div>*@
     </nav>
+    <br />
+    <div class="container-fluid">
+        <ul class="nav nav-tabs nav-fill">
+            <li class="nav-item">
+                <a id="file_upload" class="nav-link active">File Upload</a>
+            </li>
+            <li class="nav-item">
+                <a id="drag_and_drop" class="nav-link">Drag &amp; Drop</a>
+            </li>
+            <li class="nav-item">
+                <a id="web_cam" class="nav-link">Web Cam</a>
+            </li>
+        </ul>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -28,6 +35,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/site.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

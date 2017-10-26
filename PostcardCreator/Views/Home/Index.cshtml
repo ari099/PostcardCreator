@@ -2,12 +2,6 @@
     ViewBag.Title = "Home Page";
 }
 
-<br />
-<p id="fileHelp" class="form-text text-muted">Please upload an image:</p>
-@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { @class = "form-inline", enctype = "multipart/form-data", id = "UploadImage", name = "UploadImage" })) {
-    <div class="input-group">
-        <input class="form-control-file text-primary" type="file" name="file" id="file" />
-        <input class="form-control btn-primary" type="submit" value="Upload" />
-    </div>
-}
-@*<h2>@ViewBag.Error</h2>*@
+<div id="holder" class="container-fluid">
+    @Html.Partial("FileUpload")
+</div>
