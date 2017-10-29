@@ -1,10 +1,10 @@
-﻿@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "UploadImage", name = "UploadImage" }))
+﻿@*@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "dropzone", enctype = "multipart/form-data", id = "dropzoneForm", name = "UploadImage" })) {
+        <h2 id="fileHelp" class="form-text text-muted">Please upload an image:</h2>
+        <div id="dropbox" class="fallback jumbotron text-primary">
+            <input class="form-control-file text-primary" type="file" name="file" id="file" multiple/>
+        </div>
+        <input class="form-control btn-primary" type="submit" value="Upload" />
+    }*@
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "dropzone jumbotron", enctype = "multipart/form-data", id = "dropZone" }))
 {
-    <h2 id="fileHelp" class="form-text text-muted">Please upload an image:</h2>
-    <div id="dropbox" class="jumbotron text-primary">
-        @*Drag &amp; Drop Area goes here*@
-        <input class="form-control-file text-primary box__file" type="file" name="file" id="file" />
-
-    </div>
-    <input class="form-control btn-primary" type="submit" value="Upload" />
 }

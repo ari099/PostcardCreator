@@ -4,4 +4,9 @@
 }
 
 <br />
-<canvas class="container" id="change"></canvas>
+@using (Html.BeginForm("Change", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "newChange", name = "NewChange" }))
+{
+    <label for="inputEmail">Email:</label>
+    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
+    <small id="emailHelp" class="form-text text-muted">This is what we'll use to send the postcard.</small>
+}

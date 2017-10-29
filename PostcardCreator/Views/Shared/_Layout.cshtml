@@ -12,19 +12,6 @@
         @Html.ActionLink("Postcard Creator", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     </nav>
     <br />
-    <div class="container-fluid">
-        <ul class="nav nav-tabs nav-fill">
-            <li class="nav-item">
-                <a id="file_upload" class="nav-link active">File Upload</a>
-            </li>
-            <li class="nav-item">
-                <a id="drag_and_drop" class="nav-link">Drag &amp; Drop</a>
-            </li>
-            <li class="nav-item">
-                <a id="web_cam" class="nav-link">Web Cam</a>
-            </li>
-        </ul>
-    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
