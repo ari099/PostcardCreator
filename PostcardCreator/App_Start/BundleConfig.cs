@@ -26,6 +26,18 @@ namespace PostcardCreator
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // DropzoneJS...
+            bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
+                    "~/Scripts/dropzone/dropzone.js",
+                    "~/Scripts/dropzone/dropzone.min.js",
+                    "~/Scripts/dropzone/dropzone-amd-module.js",
+                    "~/Scripts/dropzone/dropzone-amd-module.min.js"));
+            bundles.Add(new StyleBundle("~/Content/dropzonescss").Include(
+                     "~/Scripts/dropzone/basic.css",
+                     "~/Scripts/dropzone/basic.min.css",
+                     "~/Scripts/dropzone/dropzone.css",
+                     "~/Scripts/dropzone/dropzone.min.css"));
         }
     }
 }

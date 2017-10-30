@@ -37,9 +37,8 @@ textarea {
 }
 
 /* Picture Change Canvas styles */
-#change {
-    border-radius: 7px;
-    box-shadow: 0px 0px 4px 0px #00426d;
+#send {
+    cursor: pointer;
 }
 
 a#file_upload, a#drag_and_drop, a#web_cam {

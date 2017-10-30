@@ -1,12 +1,34 @@
 ﻿
 @{
     ViewBag.Title = "Change";
+    var p = "new" + ViewBag.Extension;
 }
 
-<br />
-@using (Html.BeginForm("Change", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "newChange", name = "NewChange" }))
+<label for="postcardCreator">Your Postcard:</label><br />
+<img id="newImage" src="@Url.Content("~/Uploads/"+p)" hidden />
+<canvas id="postcardCreator" class="col-sm container-fluid"></canvas>
+<script>
+    // Creating the postcard...
+    var canvas = document.getElementById('postcardCreator');
+    var ctx = canvas.getContext('2d');
+    var img = document.getElementById("newImage");
+    img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+        ctx.font = canvas.height / 8 + "px Arial";
+        ctx.fillStyle = "blue";
+        ctx.fillText("Hello, World!", 0, canvas.height / 2);
+    };
+</script>
+<hr />
+@using (Html.BeginForm("Change", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "newChange", @class = "form-inline container-fluid align-items-center", name = "NewChange" }))
 {
-    <label for="inputEmail">Email:</label>
-    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
-    <small id="emailHelp" class="form-text text-muted">This is what we'll use to send the postcard.</small>
+    <div class="input-group">
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
+        @*<small id="emailHelp" class="form-text text-muted">This is what we'll use to send the postcard.</small>*@
+        <input type="button" id="send" class="form-control col-auto btn btn-primary" value="Send" />
+    </div>
 }
+<hr />
+@Html.ActionLink("Upload New Photo", "Index", "Home", new { @class = "alert-link text-muted" })

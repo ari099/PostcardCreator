@@ -65,3 +65,4 @@ C:\Users\alore\Documents\Inventions\C#\PostcardCreator\PostcardCreator\bin\Micro
 C:\Users\alore\Documents\Inventions\C#\PostcardCreator\PostcardCreator\obj\Debug\PostcardCreator.csprojResolveAssemblyReference.cache
 C:\Users\alore\Documents\Inventions\C#\PostcardCreator\PostcardCreator\obj\Debug\PostcardCreator.dll
 C:\Users\alore\Documents\Inventions\C#\PostcardCreator\PostcardCreator\obj\Debug\PostcardCreator.pdb
+C:\Users\alore\Documents\Inventions\C#\PostcardCreator\PostcardCreator\obj\Debug\PostcardCreator.csproj.CoreCompileInputs.cache
