@@ -1,26 +1,7 @@
-﻿@*@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "dropzone", enctype = "multipart/form-data", id = "dropzoneForm", name = "UploadImage" })) {
-    <h2 id="fileHelp" class="form-text text-muted">Please upload an image:</h2>
-    <div id="dropbox" class="fallback jumbotron text-primary">
-        <input class="form-control-file text-primary" type="file" name="file" id="file" multiple/>
-    </div>
-    <input class="form-control btn-primary" type="submit" value="Upload" />
-}*@
-@using (Html.BeginForm("SaveUploadedFile", "Home", FormMethod.Post, new { @class = "dropzone jumbotron", enctype = "multipart/form-data", id = "dropZone" })) {
-    <div class="fallback">
-        <input name="file" type="file" multiple />
-        <input type="submit" value="Upload" />
-    </div>
+﻿<br />
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="dropzone" class="jumbotron"><h3>Drop files here</h3></div>
+    <output id="list" class="text-primary"></output>
+    <input id="dragdropsend" class="form-control btn-primary" type="button" value="Send" />
 }
-
-<script>
-    window.onload = function () {
-        //File Upload response from the server...
-        Dropzone.options.dropZone = {
-            init: function () {
-                this.on("complete", function (data) {
-                    var res = JSON.parse(data.xhr.responseText);
-                });
-            }
-        };
-    };
-</script>

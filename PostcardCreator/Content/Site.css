@@ -28,12 +28,16 @@ textarea {
     }
 
 /* Drag & Drop Area */
-#dropZone {
-    /*background: gray;*/
-    border: 1px solid white;
-    background: #83b1cb;
-    height: 100px;
-    box-shadow: 0px 0px 3px 0px darkgray;
+#dropzone {
+    background: rgb(184, 207, 226);
+    box-shadow: 0px 0px 3px 0px black;
+    border-radius: 0px;
+    border: 1px solid rgb(208, 222, 231);
+    height: 200px;
+}
+
+#dragdropsend {
+    border-radius: 0px;
 }
 
 /* Picture Change Canvas styles */
