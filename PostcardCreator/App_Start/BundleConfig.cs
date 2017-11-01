@@ -29,6 +29,7 @@ namespace PostcardCreator
 
             // Custom JavaScript file...
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                    "~/Scripts/bootbox.js",
                     "~/Scripts/site.js"));
 
             // DropzoneJS...

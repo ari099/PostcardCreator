@@ -28,6 +28,47 @@ function handleDragOver(evt) {
 //dropZone.addEventListener('drop', handleFileSelect, false);
 
 $(document).ready(function () {
+    $("#newImage").load(function () {
+        var canvas = document.getElementById('postcardCreator');
+        var dataURL = canvas.toDataURL('image/png').replace('data:image/png;base64,', '');;
+        var image = JSON.stringify(dataURL);
+        $.ajax({
+            type: 'POST',
+            url: "/Home/Change",
+            data: '{ "imageData" : "' + image + '"}',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (msg) {
+                alert('Done, Pic Uploaded');
+            },
+            error: function (e, ts, et) {
+                debugger;
+                alert(ts);
+            }
+        });
+    });
+
+    $("#upload").bind("click", function () {
+        var imgVal = $("#file").val();
+        console.log(imgVal);
+        if (imgVal == '')
+            alert("Empty input file. Please upload an image");
+        else {
+            $.ajax({
+                url: "/Home/Index",
+                type: "POST",
+                data: formData,
+                async: false,
+                success: function (data) {
+                    // pass
+                },
+                cache: false,
+                contentType: File,
+                processData: false
+            });
+        }
+    });
+
     // Upload Options Tabs...
     $("#file_upload").click(function () {
         $(this)[0].setAttribute("class", "nav-link active");
@@ -59,18 +100,21 @@ $(document).ready(function () {
     $("#dropzone").on("drop", handleFileSelect);
 
     // Saving the canvas image...
-    $("#postcardCreator").load(function () {
-        // Save new image...
-        var image = document.getElementById('postcardCreator').toDataURL("image.png");
-        image = image.replace('data:image.png;base64,', '');
+    $("#postcardCreator").on("load", function () {
+        var image = document.getElementById('postcardCreator').toDataURL("image/png");
+        image = image.replace('data:image/png;base64,', '');
+
         $.ajax({
-            type: 'POST',
-            url: '/Home/Change',
-            data: '{ "imageData" : "' + image + '" }',
+            url: '@Url.Action("Change", "Home")',
+            type: "POST",
             contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            success: function (msg) {
-                bootbox.alert('Image saved successfully!');
+            data: { "imageData": "' + image + '" },
+            success: function (response) {
+                bootbox.alert("Image Uploaded!");
+            },
+            error: function (er) {
+                bootbox.alert("Error uploading image");
+                //window.location.href = "/Home/Index";
             }
         });
     });

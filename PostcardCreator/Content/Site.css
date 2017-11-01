@@ -23,9 +23,9 @@ textarea {
     max-width: 280px;
 }
 
-    input[type="submit"], input[type="file"] {
-        cursor: pointer;
-    }
+input[type="submit"], input[type="file"] {
+    cursor: pointer;
+}
 
 /* Drag & Drop Area */
 #dropzone {

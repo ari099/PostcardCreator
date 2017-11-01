@@ -20,10 +20,21 @@
         ctx.fillStyle = "blue";
         ctx.fillText("Hello, World!", 0, canvas.height / 2);
     };
+
+    //var xhr = new XMLHttpRequest();
+    //xhr.open('POST', '/Home/Change', true);
+    //xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+    //xhr.upload.onprogress = (e) => {
+    //    if (e.lengthComputable) {
+    //        var percentComplete = (e.loaded / e.total) * 100;
+    //        console.log(percentComplete + '% uploaded');
+    //        alert('Successfully uploaded');
+    //    }
+    //};
+    //xhr.send(dataURL);
 </script>
 <hr />
-@using (Html.BeginForm("Change", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "newChange", @class = "form-inline container-fluid align-items-center", name = "NewChange" }))
-{
+@using (Html.BeginForm("Change", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "newChange", @class = "form-inline container-fluid align-items-center", name = "NewChange" })) {
     <div class="input-group">
         <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
         @*<small id="emailHelp" class="form-text text-muted">This is what we'll use to send the postcard.</small>*@
