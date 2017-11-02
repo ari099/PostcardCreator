@@ -1,6 +1,18 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
+@if(ViewBag.Error != null) {
+    <div class="alert alert-info" role="alert">
+        <strong>Heads up!</strong> @ViewBag.Error
+    </div>
+}
+@if (ViewBag.Success != null) {
+    <div class="alert alert-info" role="alert">
+        <strong>Heads up!</strong> @ViewBag.Success
+    </div>
+}
+
 <div class="container-fluid">
     <ul class="nav nav-tabs nav-fill">
         <li class="nav-item">

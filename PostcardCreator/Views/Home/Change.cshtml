@@ -34,7 +34,11 @@
     //xhr.send(dataURL);
 </script>
 <hr />
-@using (Html.BeginForm("Modified", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "newChange", @class = "form-inline container-fluid align-items-center", name = "NewChange" })) {
+@using (Html.BeginForm("Modified", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "newChange", @class = "form-inline container-fluid align-items-center", name = "NewChange" }))
+{
+    <small class="form-text text-muted">
+        Please put in your email so we can send you the modified pic!
+    </small>
     <div class="input-group">
         <input class="form-control-file text-primary" type="text" name="modified" id="modified" hidden/>
         <input type="email" class="form-control" id="inputEmail" name="inputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />

@@ -11,6 +11,11 @@ namespace PostcardCreator.Controllers {
     public class HomeController : Controller {
         private static HttpPostedFileBase uploadedFile;
 
+        public static void LoadViewBag(dynamic viewBag)
+        {
+            viewBag.aaa = "something";
+        }
+
         /// <summary>
         /// Send an email with the image attached...
         /// </summary>
@@ -98,41 +103,13 @@ namespace PostcardCreator.Controllers {
                     byte[] data = Convert.FromBase64String(imageData);
                     bw.Write(data);
                     bw.Close();
+                    ViewBag.Success = "Image sent!";
                 }
             }
 
             // implement SendEmail function here.
-
+            
             return RedirectToAction("Index");
-        }
-
-        public ActionResult SaveUploadedFile() {
-            bool isSavedSuccessfully = true;
-            string fName = "";
-            string directory = "~/Uploads";
-            try {
-                foreach (string fileName in Request.Files) {
-                    HttpPostedFileBase file = Request.Files[fileName];
-                    //Save file content goes here
-                    fName = file.FileName;
-                    if (file != null && file.ContentLength > 0) {
-                        var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\WallImages", Server.MapPath(@"\")));
-                        var fileName1 = Path.GetFileName(file.FileName);
-                        if (!Directory.Exists(directory))
-                            Directory.CreateDirectory(directory);
-                        var path = Server.MapPath(directory + "/" + file.FileName);
-                        file.SaveAs(path);
-                    }
-                }
-            } catch (Exception ex) {
-                isSavedSuccessfully = false;
-            }
-
-            if (isSavedSuccessfully) {
-                return RedirectToAction("Change");
-            } else {
-                return RedirectToAction("Index");
-            }
         }
     }
 }
