@@ -11,6 +11,15 @@ namespace PostcardCreator.Controllers {
     public class HomeController : Controller {
         private static HttpPostedFileBase uploadedFile;
 
+        /// <summary>
+        /// Send an email with the image attached...
+        /// </summary>
+        /// <param name="server"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="item"></param>
         static void SendEmail(string server, string username, string password, string from, string to, Attachment item) {
             SmtpClient client = new SmtpClient(server);
             client.Port = 587;
