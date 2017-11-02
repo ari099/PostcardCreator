@@ -28,29 +28,62 @@ function handleDragOver(evt) {
 //dropZone.addEventListener('drop', handleFileSelect, false);
 
 $(document).ready(function () {
-    $("#newImage").load(function () {
+    //$("#newImage").load(function () {
+    //    var canvas = document.getElementById('postcardCreator');
+    //    var dataURL = canvas.toDataURL('image/png').replace('data:image/png;base64,', '');;
+    //    var image = JSON.stringify(dataURL);
+    //    $.ajax({
+    //        type: 'POST',
+    //        url: "/Home/Change",
+    //        data: '{ "imageData" : "' + dataURL + '"}',
+    //        contentType: 'application/json; charset=utf-8',
+    //        dataType: 'json',
+    //        success: function (msg) {
+    //            alert('Done, Pic Uploaded');
+    //        },
+    //        error: function (e, ts, et) {
+    //            //debugger;
+    //            alert(ts);
+    //        }
+    //    });
+    //});
+    $("#send").bind("click", function () {
         var canvas = document.getElementById('postcardCreator');
-        var dataURL = canvas.toDataURL('image/png').replace('data:image/png;base64,', '');;
-        var image = JSON.stringify(dataURL);
-        $.ajax({
-            type: 'POST',
-            url: "/Home/Change",
-            data: '{ "imageData" : "' + image + '"}',
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            success: function (msg) {
-                alert('Done, Pic Uploaded');
-            },
-            error: function (e, ts, et) {
-                debugger;
-                alert(ts);
-            }
-        });
+        var image = canvas.toDataURL('image/png').replace('data:image/png;base64,', '');
+        $("#modified").val(image);
+        $("#newChange").submit();
+        //var blob = canvas.toBlob((blob) => {
+        //    var newImg = document.createElement('img'),
+        //        url = URL.createObjectURL(blob);
+
+        //    newImg.onload = () => {
+        //        URL.revokeObjectURL(url);
+        //    };
+
+        //    newImg.src = url;
+        //    //document.body.appendChild(newImg);
+
+        //    var rq = new XMLHttpRequest();
+        //    rq.open("POST", "/Home/Change", false);
+        //    var formData = new FormData();
+        //    formData.append(newImg);
+        //    rq.send(formData);
+        //});
+        //if (image !== null) {
+        //    $.ajax({
+        //        url: "/Home/Change",
+        //        type: "POST",
+        //        data: '{"imageData": "' + image + '"}',
+        //        async: false,
+        //        cache: false,
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json"
+        //    })
+        //}
     });
 
     $("#upload").bind("click", function () {
         var imgVal = $("#file").val();
-        console.log(imgVal);
         if (imgVal == '')
             alert("Empty input file. Please upload an image");
         else {

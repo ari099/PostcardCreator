@@ -87,9 +87,10 @@ namespace PostcardCreator.Controllers {
             }
         }
         [HttpPost]
-        public ActionResult Change(string imageData) {
+        public ActionResult Modified() {
+            string imageData = Request["modified"];
             string directory = "~/Uploads";
-            string fileNameWitPath = directory + DateTime.Now.ToString().Replace("/", "-").Replace(" ", "- ").Replace(":", "") + ".png";
+            string fileNameWitPath = directory + "/modified.png";
 
             using (FileStream fs = new FileStream(Server.MapPath(fileNameWitPath), FileMode.Create)) {
                 using (BinaryWriter bw = new BinaryWriter(fs)) {
