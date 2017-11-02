@@ -51,35 +51,14 @@ $(document).ready(function () {
         var canvas = document.getElementById('postcardCreator');
         var image = canvas.toDataURL('image/png').replace('data:image/png;base64,', '');
         $("#modified").val(image);
-        $("#newChange").submit();
-        //var blob = canvas.toBlob((blob) => {
-        //    var newImg = document.createElement('img'),
-        //        url = URL.createObjectURL(blob);
-
-        //    newImg.onload = () => {
-        //        URL.revokeObjectURL(url);
-        //    };
-
-        //    newImg.src = url;
-        //    //document.body.appendChild(newImg);
-
-        //    var rq = new XMLHttpRequest();
-        //    rq.open("POST", "/Home/Change", false);
-        //    var formData = new FormData();
-        //    formData.append(newImg);
-        //    rq.send(formData);
-        //});
-        //if (image !== null) {
-        //    $.ajax({
-        //        url: "/Home/Change",
-        //        type: "POST",
-        //        data: '{"imageData": "' + image + '"}',
-        //        async: false,
-        //        cache: false,
-        //        contentType: "application/json; charset=utf-8",
-        //        dataType: "json"
-        //    })
-        //}
+        if ($("#inputEmail").val() == "") {
+            $("#newChange").submit(function (e) {
+                e.preventDefault();
+            });
+            alert("Please enter an email");
+        } else {
+            $("#newChange").unbind('submit').submit();
+        }
     });
 
     $("#upload").bind("click", function () {

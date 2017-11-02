@@ -11,9 +11,12 @@ namespace PostcardCreator.Controllers {
     public class HomeController : Controller {
         private static HttpPostedFileBase uploadedFile;
 
-        static void SendEmail(string server, string email, Attachment item) {
+        static void SendEmail(string server, string username, string password, string from, string to, Attachment item) {
             SmtpClient client = new SmtpClient(server);
-            MailMessage mm = new MailMessage("noreply@gmail.com", email);
+            client.Port = 587;
+            client.Credentials = new NetworkCredential(username, password);
+            client.EnableSsl = true;
+            MailMessage mm = new MailMessage(from, to);
             mm.Subject = "Your Postcard";
             mm.Body = "Hope you enjoy the new postcard!";
             mm.Attachments.Add(item);
@@ -25,8 +28,7 @@ namespace PostcardCreator.Controllers {
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             return View();
         }
 
@@ -36,13 +38,10 @@ namespace PostcardCreator.Controllers {
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Index(HttpPostedFileBase file)
-        {
+        public ActionResult Index(HttpPostedFileBase file) {
             uploadedFile = file;
             string directory = "~/Uploads";
-            if (file != null && file.ContentLength > 0)
-            {
-                //uploadedFile = file.FileName;
+            if (file != null && file.ContentLength > 0) {
                 var fileName = Path.GetFileName(file.FileName);
                 var extension = Path.GetExtension(fileName);
                 ViewBag.Extension = Path.GetExtension(fileName);
@@ -53,16 +52,13 @@ namespace PostcardCreator.Controllers {
         }
 
         // Partial Views...
-        public ActionResult FileUpload()
-        {
+        public ActionResult FileUpload() {
             return PartialView();
         }
-        public ActionResult DragAndDrop()
-        {
+        public ActionResult DragAndDrop() {
             return PartialView();
         }
-        public ActionResult WebCam()
-        {
+        public ActionResult WebCam() {
             return PartialView();
         }
 
@@ -71,17 +67,13 @@ namespace PostcardCreator.Controllers {
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Change()
-        {
+        public ActionResult Change() {
             //System.NullReferenceException: 'Object reference not set to an instance of an object.'
-            try
-            {
+            try {
                 var fileName = Path.GetFileName(uploadedFile.FileName);
                 ViewBag.Extension = Path.GetExtension(fileName);
                 return View();
-            }
-            catch (NullReferenceException e)
-            {
+            } catch (NullReferenceException e) {
                 ViewBag.Error = e.Message;
                 return RedirectToAction("Index");
             }
@@ -100,23 +92,21 @@ namespace PostcardCreator.Controllers {
                 }
             }
 
+            // implement SendEmail function here.
+
             return RedirectToAction("Index");
         }
 
-        public ActionResult SaveUploadedFile()
-        {
+        public ActionResult SaveUploadedFile() {
             bool isSavedSuccessfully = true;
             string fName = "";
             string directory = "~/Uploads";
-            try
-            {
-                foreach (string fileName in Request.Files)
-                {
+            try {
+                foreach (string fileName in Request.Files) {
                     HttpPostedFileBase file = Request.Files[fileName];
                     //Save file content goes here
                     fName = file.FileName;
-                    if (file != null && file.ContentLength > 0)
-                    {
+                    if (file != null && file.ContentLength > 0) {
                         var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\WallImages", Server.MapPath(@"\")));
                         var fileName1 = Path.GetFileName(file.FileName);
                         if (!Directory.Exists(directory))
@@ -125,18 +115,13 @@ namespace PostcardCreator.Controllers {
                         file.SaveAs(path);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 isSavedSuccessfully = false;
             }
 
-            if (isSavedSuccessfully)
-            {
+            if (isSavedSuccessfully) {
                 return RedirectToAction("Change");
-            }
-            else
-            {
+            } else {
                 return RedirectToAction("Index");
             }
         }

@@ -37,7 +37,7 @@
 @using (Html.BeginForm("Modified", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "newChange", @class = "form-inline container-fluid align-items-center", name = "NewChange" })) {
     <div class="input-group">
         <input class="form-control-file text-primary" type="text" name="modified" id="modified" hidden/>
-        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
+        <input type="email" class="form-control" id="inputEmail" name="inputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
         @*<small id="emailHelp" class="form-text text-muted">This is what we'll use to send the postcard.</small>*@
         <button class="btn btn-primary form-control" style="cursor: pointer;" id="send">Send</button>
     </div>
